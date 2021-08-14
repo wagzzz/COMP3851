@@ -1,30 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Container, Navbar, Row, Col } from 'react-bootstrap';
+import { LinkContainer} from "react-router-bootstrap";
+
 
 const Home = () => {
 
     return (
         <div>
-            <div className="logo">
-                <Link to="/">
-                    <h1>Dashboard</h1>
-                </Link>
-            </div>
+            <Navbar bg="dark" variant="dark">
+                <Container>
+                    <LinkContainer to="/">
+                        <Navbar.Brand>University Of Newcastle - Program Advisory Tool</Navbar.Brand>
+                    </LinkContainer>
+                </Container>
+            </Navbar>
 
-            <div className="auth-form login-form fade-in">
-                <h2>Hello there!</h2>
-                <p>You can register or login!</p>
-                <Link to="/login?type=admin">
-                    <button className="submit-button">Login as admin</button>
-                </Link>
-                <Link to="/login?type=user">
-                    <button className="submit-button">Login as user</button>
-                </Link>
-                <Link to="/register">
-                    <button className="submit-button">Register</button>
-                </Link>
-            </div>
+            <Container>
+                <h1 className="bigHeader">University of Newcastle's Program Advisory Tool Homepage</h1>
 
+                <h2 className="subHeaderHome">Use the following options below to login or register:</h2>
+
+                <Row>
+                    <Col className="register">
+                        <LinkContainer to="/login?type=admin">
+                            <Button size="lg">Login as admin</Button>
+                        </LinkContainer>
+                    </Col>
+                    <Col className="register">
+                        <LinkContainer to="/login?type=user">
+                            <Button size="lg">Login as user</Button>
+                        </LinkContainer>
+                    </Col>
+                    <Col className="register">
+                        <LinkContainer to="/register">
+                            <Button size="lg">Register</Button>
+                        </LinkContainer>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     )
 }

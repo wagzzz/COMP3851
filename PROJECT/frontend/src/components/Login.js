@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import { login } from '../store/actions/authActions';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
+import { Button, Container, Navbar, Form } from 'react-bootstrap';
+import { LinkContainer, Row, Column } from "react-router-bootstrap";
+
 
 
 let config = { 
@@ -44,51 +47,46 @@ const Login = () => {
 
     return (
         <div >
-            <div>
-                <Link to="/">
-                    <h1>Dashboard</h1>
-                </Link>
-            </div>
+            <Navbar bg="dark" variant="dark">
+                <Container>
+                    <LinkContainer to="/">
+                        <Navbar.Brand>University Of Newcastle - Program Advisory Tool</Navbar.Brand>
+                    </LinkContainer>
+                </Container>
+            </Navbar>
 
-            <form onSubmit={submitHandler} className="form-group">
 
-                <h2>Welcome</h2>
+            <Container>
+                <Form onSubmit={submitHandler}>
+                    <h1 className="bigHeader">University of Newcastle's Program Advisory Tool Login</h1>
 
-                <p>Welcome back! Login to your {loginType} account!</p>
+                    <h2 className="subHeader">Welcome back! Login to your {loginType} account!</h2>
 
-                <div>
-                    <div>
-                        <input type="email" placeholder="Email Address" 
-                        value={email} onChange={(e) => setEmail(e.currentTarget.value)}  required />
-                    </div>
-                </div>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.currentTarget.value)} required/>
+                    </Form.Group>
 
-                <div>
-                    <div>
-                        <input type="password" placeholder="Password" required minLength={6}
-                        onChange={(e) => setPassword(e.currentTarget.value)}  />
-                    </div>
-                </div>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.currentTarget.value)} required/>
+                    </Form.Group>
 
-                <p>You're {loginType === "admin" ? "a user" : "an admin"}?
+                    <p>You're {loginType === "admin" ? "a user?" : "an admin?"}
 
-                    <Link to={"/login?type=" + (loginType === "admin" ? "user" : "admin")}>
-                        <span>Sign In from here!</span>
-                    </Link>
+                    <LinkContainer to={"/login?type=" + (loginType === "admin" ? "user" : "admin")}>
+                            <Button variant="link">SIGN IN HERE</Button>
+                        </LinkContainer>
 
-                </p>
+                    </p>
 
-                {error && <p>{error}</p>}
-                <button >Login</button>
+                    {error && <p>{error}</p>}
 
-                
-                <p>Don’t Have an account?
-                    <Link to="/register">
-                        <span>Sign Up Now!</span>
-                    </Link>
-                </p>
-
-            </form>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+            </Container>
         </div>
     )
 }

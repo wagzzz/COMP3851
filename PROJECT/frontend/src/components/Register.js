@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Button, Container, Navbar, Row, Col, Form } from 'react-bootstrap';
+import { LinkContainer} from "react-router-bootstrap";
+
 
 let config = { 
     headers: {
@@ -12,7 +15,7 @@ let config = {
 const Register = () => {
 
     const initState = {
-        firstName: '',
+        firstName: "",
         email: "",
         lastName: "",
         password: ""
@@ -49,72 +52,62 @@ const Register = () => {
     return (
         <div>
 
-            <div className="logo">
-                <Link to="/">
-                    <h1>Dashboard</h1>
-                </Link>
-            </div>
+            <Navbar bg="dark" variant="dark">
+                <Container>
+                    <LinkContainer to="/">
+                        <Navbar.Brand>University Of Newcastle - Program Advisory Tool</Navbar.Brand>
+                    </LinkContainer>
+                </Container>
+            </Navbar>
 
-            <form onSubmit={submitHandler}>
-                <h2>Register!</h2>
-                <p>Create a new account!</p>
 
-                <div>
-                    <div>
-                        <input type="text" name="firstName" value={data.firstName} 
-                        onChange={handleChange} placeholder="First name" minLength={4} required/>
-                    </div>
-                </div>
+            <Container>
+                <h1 className="bigHeader">University of Newcastle's Program Advisory Tool Registry Page</h1>
 
-                <div>
-                    <div>
-                        <input type="text" name="lastName" value={data.lastName} 
-                        onChange={handleChange} placeholder="Last name" minLength={4} required/>
-                    </div>
-                </div>
+                <h2 className="subHeaderHome">Input your details to register an account:</h2>
 
-                <div>
-                    <div>
-                        <input type="email" placeholder="Email Address" name="email" value={data.email} 
-                        onChange={handleChange} required/>
-                    </div>
-                </div>
+                <Form onSubmit={submitHandler}>
 
-                <div>
-                    <div>
-                        <input type="password" placeholder="Password" name="password" value={data.password} 
-                        onChange={handleChange} required minLength={6}/>
-                    </div>
-                </div>
+                    <Form.Group className="mb-3" controlId="firstName">
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control type="text" name="firstName" placeholder="First name" value={data.firstName} onChange={handleChange}  required/>
+                    </Form.Group>
 
-                <div>
-                    <label htmlFor="accept">
-                        <p>
-                            <input type="checkbox" name="accept" id="accept"
-                            checked={checked} onChange={()=>setChecked(!checked)} />
-                            {" "}
-                            <span>This user is an admin</span>
-                        </p>
-                    </label>
-                </div>
+                    <Form.Group className="mb-3" controlId="lastName">
+                        <Form.Label>Last Name</Form.Label>
+                        <Form.Control type="text" name="lastName" placeholder="Last name" value={data.lastName} onChange={handleChange}  required />
+                    </Form.Group>
 
-                {error && <p> {error} </p>}
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" placeholder="Email Address" name="email" value={data.email} onChange={handleChange} required/>
+                    </Form.Group>
 
-                {success && <p>{success}</p>}
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" name="password" value={data.password} onChange={handleChange} required minLength={6} />
+                    </Form.Group>
 
-                <button>Register</button>
+                    {error && <p> {error} </p>}
 
-                <p>Already have an account? Login as
-                    <Link to="/login?type=admin">
-                        <span>Admin</span>
-                    </Link>
-                    Or
-                    <Link to="/login?type=user">
-                        <span>User</span>
-                    </Link>
-                </p>
+                    {success && <p>{success}</p>}
 
-            </form>
+                    <Button variant="primary" type="submit">
+                        Register
+                    </Button>
+
+                    <p>Already have an account? Login as
+                    <LinkContainer to="/login?type=admin">
+                            <Button variant="link">Admin</Button>
+                        </LinkContainer>
+                    or
+                    <LinkContainer to="/login?type=user">
+                            <Button variant="link">User</Button>
+                        </LinkContainer>
+                    </p>
+                </Form>
+
+            </Container>
         </div>
     )
 }
