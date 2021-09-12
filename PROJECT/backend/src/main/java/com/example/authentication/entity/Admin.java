@@ -1,6 +1,7 @@
 package com.example.authentication.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -8,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-@AllArgsConstructor @NoArgsConstructor
+@NoArgsConstructor @Data
 public class Admin {
     @Id
     @GeneratedValue
@@ -18,4 +19,11 @@ public class Admin {
     public String lastName;
     public String password;
     public String email;
+
+    public Admin(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
 }

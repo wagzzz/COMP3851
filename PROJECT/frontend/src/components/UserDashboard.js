@@ -7,7 +7,7 @@ import { Button, Container, Navbar, Row, Col } from 'react-bootstrap';
 import { LinkContainer} from "react-router-bootstrap";
 
 
-const Dashboard = () => {
+const UserDashboard = () => {
     const dispatch = useDispatch();
 
     const signout = () => {
@@ -33,7 +33,7 @@ const Dashboard = () => {
             </Navbar>
 
             <Container>
-                <h1 className="bigHeader"> Dashboard </h1>
+                <h1 className="bigHeader"> User Dashboard </h1>
                 <Row>
                     <Col>
                         <h3>Selecting new Degree Plan</h3>
@@ -52,4 +52,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+export default UserDashboard;

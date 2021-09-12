@@ -1,15 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\src",
-    "\\src\\assets",
-    "\\src\\components",
-    "\\src\\routes",
-    "\\src\\store",
-    "\\src\\store\\actions",
-    "\\src\\store\\reducers",
-    "\\src\\styles"
+    ""
   ],
-  "SelectedNode": "\\src\\components\\Register.js",
   "PreviewInSolutionExplorer": false
 }

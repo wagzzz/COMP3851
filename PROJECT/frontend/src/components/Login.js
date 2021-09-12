@@ -35,7 +35,7 @@ const Login = () => {
         try{
             const body = JSON.stringify({email, password})
             let res = await axios.post('/api/login/' + loginType, body, config);
-            dispatch(login(res.data))
+            dispatch(login({...res.data, role: loginType}))
         }catch(err){
             let { status } = err.response;
             if(status === 400)
