@@ -42,6 +42,16 @@ public class Degree {
     )
     public Set<Course> courses;
 
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(
+            name = "degree_id",
+            referencedColumnName = "degreeId"
+    )
+    public Set<Course> directedCourses;
+
     public Degree(String name, String major, String faculty, int numberOfUnits, boolean assignedToUser){
         this.name = name;
         this.major = major;
@@ -49,6 +59,7 @@ public class Degree {
         this.numberOfUnits = numberOfUnits;
         this.assignedToUser = assignedToUser;
         courses = new HashSet<>();
+        directedCourses = new HashSet<>();
     }
 
     //Copy constructor for making a copy of Degree for adding to user
@@ -60,12 +71,19 @@ public class Degree {
         this.numberOfUnits = degree.numberOfUnits;
         this.assignedToUser = true;
         courses = new HashSet<>();
+        directedCourses = new HashSet<>();
 
         //Uses course copy instructor to also copy the courses that are inside the degree
         for(Course element : degree.courses)
         {
             Course tempCourse = new Course(element);
             courses.add(new Course(tempCourse));
+        }
+
+        for(Course element : degree.directedCourses)
+        {
+            Course tempCourse = new Course(element);
+            directedCourses.add(new Course(tempCourse));
         }
 
     }
@@ -75,5 +93,9 @@ public class Degree {
         courses.add(course);
     }
 
+    public void addDirectedCourse(Course course)
+    {
+        directedCourses.add(course);
+    }
 
 }

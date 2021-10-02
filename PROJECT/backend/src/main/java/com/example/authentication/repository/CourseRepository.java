@@ -10,4 +10,5 @@ import java.util.List;
 public interface CourseRepository extends JpaRepository<Course, Long> {
     //Call function with value 'false' to return base 'initial' courses
     List<Course> findCoursesByAssignedToDegree(Boolean assignedToDegree);
+    List<Course> findCoursesByDegree_DegreeId(String degreeID);
 }

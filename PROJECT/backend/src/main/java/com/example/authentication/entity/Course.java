@@ -23,6 +23,7 @@ public class Course {
     public int units;
     public int semester;
     public boolean assignedToDegree;
+    public boolean isDirected;
 
     @ManyToOne(
             fetch = FetchType.EAGER
@@ -38,6 +39,7 @@ public class Course {
         this.units = units;
         this.semester = semester;
         this.assignedToDegree = assignedToDegree;
+        this.isDirected = false;
     }
 
     public Course(String courseCode, String courseName, String type, int level, int units, int semester, boolean assignedToDegree){
@@ -49,6 +51,19 @@ public class Course {
         this.units = units;
         this.semester = semester;
         this.assignedToDegree = assignedToDegree;
+        this.isDirected = false;
+    }
+
+    public Course(String courseCode, String courseName, String type, int level, int units, int semester, boolean assignedToDegree, boolean isDirected){
+
+        this.courseCode = courseCode;
+        this.courseName = courseName;
+        this.type = type;
+        this.level = level;
+        this.units = units;
+        this.semester = semester;
+        this.assignedToDegree = assignedToDegree;
+        this.isDirected = isDirected;
     }
 
     //Copy Constructor for creating 'copies' of the blanks to Users new degrees.

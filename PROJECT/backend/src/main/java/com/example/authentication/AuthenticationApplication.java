@@ -63,7 +63,10 @@ public class AuthenticationApplication implements CommandLineRunner {
         this.courseRepository.save(new Course("COMP3260", "DATA SECURITY", 3, 10, 2, false));
         this.courseRepository.save(new Course("COMP3320", "COMPUTER GRAPHICS", 3, 10, 2, false));
         this.courseRepository.save(new Course("ELEC3500", "TELECOMMUNICATIONS NETWORK", 3, 10, 2, false));
-        this.courseRepository.save(new Course("ELEC3500", "TELECOMMUNICATIONS NETWORK", 3, 10, 2, false));
+        this.courseRepository.save(new Course("INFT2150", "BUSINESS ANALYSIS", 2, 10, 2, false));
+        this.courseRepository.save(new Course("COMP3350", "ADVANCED DATABASE", 3, 10, 1, false));
+        this.courseRepository.save(new Course("INFT3950", "GAMES DESIGN", 3, 10, 1, false));
+        this.courseRepository.save(new Course("INFT3960", "GAMES PRODUCTION", 3, 10, 1, false));
 
         //Computer Science with Software Development Major
         Degree tempDegree = new Degree("Bachelor of Computer Science", "Software Development", "Engineering", 240, false);
@@ -77,7 +80,7 @@ public class AuthenticationApplication implements CommandLineRunner {
         tempDegree.addCourse(new Course("SENG1050", "WEB TECHNOLOGIES", "CORE", 1, 10, 2, true));
         tempDegree.addCourse(new Course("SENG1120", "DATA STRUCTURES", "CORE", 1, 10, 2, true));
         tempDegree.addCourse(new Course("COMP2270", "THEORY OF COMPUTATION", "CORE", 2, 10, 1, true));
-        tempDegree.addCourse(new Course("SENG2050", "WEB ENGINEERING", "DIRECTED", 3, 10, 1, true));
+        tempDegree.addCourse(new Course("SENG2050", "WEB ENGINEERING", "DIRECTED", 2, 10, 1, true));
         tempDegree.addCourse(new Course("SENG2130", "SYSTEMS ANALYSIS AND DESIGN", "CORE", 2, 10, 1, true));
         tempDegree.addCourse(new Course("SENG2200", "PROGRAMMING LANGUAGES AND PARADIGMS", "CORE", 2, 10, 1, true));
         tempDegree.addCourse(new Course("COMP2230", "ALGORITHMS", "CORE", 2, 10, 2, true));
@@ -92,7 +95,15 @@ public class AuthenticationApplication implements CommandLineRunner {
         tempDegree.addCourse(new Course("COMP3260", "DATA SECURITY", "DIRECTED", 3, 10, 2, true));
         tempDegree.addCourse(new Course("COMP3320", "COMPUTER GRAPHICS", "DIRECTED", 3, 10, 2, true));
         tempDegree.addCourse(new Course("ELEC3500", "TELECOMMUNICATIONS NETWORK", "CORE", 3, 10, 2, true));
-        tempDegree.addCourse(new Course("ELEC3500", "TELECOMMUNICATIONS NETWORK", "CORE", 3, 10, 2, true));
+
+        tempDegree.addDirectedCourse(new Course("INFT2150", "BUSINESS ANALYSIS", "DIRECTED", 2, 10, 2, true, true));
+        tempDegree.addDirectedCourse(new Course("SENG2050", "WEB ENGINEERING", "DIRECTED", 2, 10, 1, true, true));
+        tempDegree.addDirectedCourse(new Course("COMP3260", "DATA SECURITY", "DIRECTED", 3, 10, 1, true, true));
+        tempDegree.addDirectedCourse(new Course("SENG3320", "COMPUTER GRAPHICS", "DIRECTED", 3, 10, 1, true, true));
+        tempDegree.addDirectedCourse(new Course("COMP3350", "ADVANCED DATABASE", "DIRECTED", 3, 10, 1, true, true));
+        tempDegree.addDirectedCourse(new Course("INFT3950", "GAMES DESIGN", "DIRECTED", 3, 10, 1, true, true));
+        tempDegree.addDirectedCourse(new Course("INFT3960", "GAMES PRODUCTION", "DIRECTED", 3, 10, 1, true, true));
+
         this.degreeRepository.save(tempDegree);
 
         Degree userDegree = degreeRepository.findDegreeByName("Bachelor of Computer Science");
