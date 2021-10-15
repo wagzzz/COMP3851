@@ -25,19 +25,16 @@ public class User {
             fetch = FetchType.EAGER
     )
     @JoinColumn(
-            name = "user_id",
+            //name = "user_id",
             referencedColumnName = "userId"
     )
-    public Set<Degree> userDegrees;
+    public List<DegreePlan> userDegreePlans;
 
     public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        userDegrees = new HashSet<Degree>() {
-        };
-
     }
 
 }

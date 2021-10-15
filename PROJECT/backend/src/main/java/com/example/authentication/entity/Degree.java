@@ -2,14 +2,9 @@ package com.example.authentication.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @NoArgsConstructor @Data
@@ -22,80 +17,36 @@ public class Degree {
     public String name;
     public String major;
     public String faculty;
-    public int numberOfUnits;
-    public boolean assignedToUser;
-    public String savedName;
-
-    @ManyToOne(
-            fetch = FetchType.EAGER
-    )
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    public User user;
+    public int numberOfUnits; // 240 or 320
 
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )
     @JoinColumn(
-            name = "degree_id",
+            //name = "degree_plans_degree_id",
             referencedColumnName = "degreeId"
     )
-    public Set<Course> courses;
+    public List<DegreePlan> degreePlans;
 
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )
     @JoinColumn(
-            name = "degree_id",
+            name = "restraints_degree_id",
             referencedColumnName = "degreeId"
     )
-    public Set<Course> directedCourses;
+    public List<Restraint> restraints;
 
-    public Degree(String name, String major, String faculty, int numberOfUnits, boolean assignedToUser){
+    public Degree(String name, String major, String faculty, int numberOfUnits) {
         this.name = name;
         this.major = major;
         this.faculty = faculty;
         this.numberOfUnits = numberOfUnits;
-        this.assignedToUser = assignedToUser;
-        courses = new HashSet<>();
-        directedCourses = new HashSet<>();
     }
 
-    //Copy constructor for making a copy of Degree for adding to user
-    public Degree(Degree degree){
-        this.degreeId = null;
-        this.name = degree.name;
-        this.major = degree.major;
-        this.faculty = degree.faculty;
-        this.numberOfUnits = degree.numberOfUnits;
-        this.assignedToUser = true;
-        courses = new HashSet<>();
-        directedCourses = new HashSet<>();
-
-        //Uses course copy instructor to also copy the courses that are inside the degree
-        for(Course element : degree.courses)
-        {
-            Course tempCourse = new Course(element);
-            courses.add(new Course(tempCourse));
-        }
-
-        for(Course element : degree.directedCourses)
-        {
-            Course tempCourse = new Course(element);
-            directedCourses.add(new Course(tempCourse));
-        }
-
+    public Degree(Long degreeId) {
+        this.degreeId = degreeId;
     }
-
-    public void addCourse(Course course)
-    {
-        courses.add(course);
-    }
-
-    public void addDirectedCourse(Course course)
-    {
-        directedCourses.add(course);
-    }
-
 }

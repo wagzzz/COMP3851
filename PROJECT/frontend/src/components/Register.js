@@ -3,14 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button, Container, Navbar, Row, Col, Form } from 'react-bootstrap';
 import { LinkContainer} from "react-router-bootstrap";
-
-
-let config = { 
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json' 
-    }
-}
+import { config } from "../constants";
 
 const Register = () => {
 

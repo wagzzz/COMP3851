@@ -3,8 +3,15 @@
     "",
     "\\src",
     "\\src\\components",
+    "\\src\\components\\Admin",
+    "\\src\\components\\Admin\\Course",
+    "\\src\\components\\Admin\\Degree",
+    "\\src\\components\\Admin\\DegreePlan",
+    "\\src\\components\\User",
+    "\\src\\components\\User\\DegreePlan",
+    "\\src\\constants",
     "\\src\\routes"
   ],
-  "SelectedNode": "\\src\\routes\\Router.js",
+  "SelectedNode": "\\src\\components\\Admin\\Course\\CourseModal.js",
   "PreviewInSolutionExplorer": false
 }

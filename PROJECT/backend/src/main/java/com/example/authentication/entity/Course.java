@@ -1,81 +1,48 @@
 package com.example.authentication.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor @Data
 public class Course {
 
     @Id
-    @GeneratedValue
-    public Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long courseId;
 
-    public String courseCode;
-    public String courseName;
-    public String type;
+    public String code;
+    public String name;
     public int level;
     public int units;
-    public int semester;
-    public boolean assignedToDegree;
-    public boolean isDirected;
 
-    @ManyToOne(
+    @OneToMany(
+            cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    public Degree degree;
+    @JoinColumn(
+            //name = "degree_plans_degree_id",
+            referencedColumnName = "courseId"
+    )
+    public List<CoursePlan> coursePlans;
 
-    public Course(String courseCode, String courseName, int level, int units, int semester, boolean assignedToDegree){
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(
+            //name = "restraints_degree_id",
+            referencedColumnName = "courseId"
+    )
+    public List<Restraint> restraints;
 
-        this.courseCode = courseCode;
-        this.courseName = courseName;
+    public Course(String code, String name, int level, int units) {
+        this.name = name;
+        this.code = code;
         this.level = level;
         this.units = units;
-        this.semester = semester;
-        this.assignedToDegree = assignedToDegree;
-        this.isDirected = false;
     }
-
-    public Course(String courseCode, String courseName, String type, int level, int units, int semester, boolean assignedToDegree){
-
-        this.courseCode = courseCode;
-        this.courseName = courseName;
-        this.type = type;
-        this.level = level;
-        this.units = units;
-        this.semester = semester;
-        this.assignedToDegree = assignedToDegree;
-        this.isDirected = false;
-    }
-
-    public Course(String courseCode, String courseName, String type, int level, int units, int semester, boolean assignedToDegree, boolean isDirected){
-
-        this.courseCode = courseCode;
-        this.courseName = courseName;
-        this.type = type;
-        this.level = level;
-        this.units = units;
-        this.semester = semester;
-        this.assignedToDegree = assignedToDegree;
-        this.isDirected = isDirected;
-    }
-
-    //Copy Constructor for creating 'copies' of the blanks to Users new degrees.
-    public Course(Course course){
-        this.id = null;
-        this.courseCode = course.courseCode;
-        this.courseName = course.courseName;
-        this.type = course.type;
-        this.level = course.level;
-        this.units = course.units;
-        this.semester = course.semester;
-        this.assignedToDegree = course.assignedToDegree;
-    }
-
 }

@@ -5,15 +5,7 @@ import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
 import { Button, Container, Navbar, Form } from 'react-bootstrap';
 import { LinkContainer, Row, Column } from "react-router-bootstrap";
-
-
-
-let config = { 
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json' 
-    }
-}
+import { config } from '../constants';
 
 const Login = () => {
 
@@ -36,7 +28,7 @@ const Login = () => {
             const body = JSON.stringify({email, password})
             let res = await axios.post('/api/login/' + loginType, body, config);
             dispatch(login({...res.data, role: loginType}))
-        }catch(err){
+        } catch(err){
             let { status } = err.response;
             if(status === 400)
                 return setError("Wrong credentials!")

@@ -26,3 +26,166 @@ body {
     justify-content: center;
     align-item: center
 }
+
+.list-btn-group {
+    text-align: right;
+    position: absolute !important;
+    bottom: 10px !important;
+    right: 10px !important;
+}
+
+.list-add-btn {
+
+}
+
+.list-edit-btn {
+    font-size: 0.8rem !important;
+    padding: 0 5px 3px !important;
+    border-radius: 0.2rem !important;
+}
+
+.list-delete-btn {
+    font-size: 0.8rem !important;
+    padding: 0 5px 3px !important;
+    border-radius: 0.2rem !important;
+    /*position: absolute !important;
+    bottom: 0% !important;
+    right: 0% !important;*/
+}
+
+.plan-panel {
+    padding: 5px;
+    border: 1px solid #999;
+}
+
+.course-item {
+    /* nested boxes */
+    flex: 0 0 auto;
+    width: calc(12.5% - 4px) !important;
+    height: 100%;
+    /* decorating */
+    border-radius: 10px;
+    /* drag style */
+    cursor: move;
+    border-bottom: 1px solid #333 !important;
+    margin: 2px;
+}
+
+.course-item-left-sep {
+    border-right: 1px solid #333 !important;
+}
+
+.course-item-right-sep {
+    border-left: 1px solid #333 !important;
+}
+
+.disabled-course-item {
+    /* nested boxes */
+    flex: 0 0 auto;
+    width: calc(12.5% - 4px) !important;
+    height: 100%;
+    cursor: not-allowed;
+    margin: 2px;
+    border: 0px !important;
+}
+
+.course-item-div {
+    height: calc( 6vh - 12px );
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.course-item-btn-group {
+    height: calc( 6vh - 12px );
+    display: flex;
+    justify-content: space-between;
+    position: relative
+}
+
+.edit-btn {
+    cursor: pointer;
+    color: blue;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.delete-btn {
+    cursor: pointer;
+    color: red;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0%;
+}
+
+.plan-board {
+    width: 100%;
+    padding: 0px 3%;
+}
+
+.year-panel {
+    position: relative;
+    height: 126px;
+    height: calc( 24vh - 42px );
+}
+
+.year-label {
+    color: dodgerblue;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10%;
+    font-size: 1.5rem;
+}
+
+.semester-panel {
+    position: relative;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.semester-label {
+    color: dodgerblue;
+    font-size: 1.5rem;
+}
+
+.degree-title {
+    padding-left: 10% !important;
+    margin-top: 30px !important;
+    margin-bottom: 15px !important;
+}
+
+.justify-btn-group {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 50px;
+}
+
+.save-btn {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    width: 100px;
+}
+
+.cancel-btn {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0%;
+    width: 100px;
+}
+
+.autocomplete-btn {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+}

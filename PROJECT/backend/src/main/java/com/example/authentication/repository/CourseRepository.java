@@ -8,7 +8,9 @@ import java.util.List;
 
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
-    //Call function with value 'false' to return base 'initial' courses
-    List<Course> findCoursesByAssignedToDegree(Boolean assignedToDegree);
-    List<Course> findCoursesByDegree_DegreeId(String degreeID);
+
+    Course findCourseByCourseId(long courseId);
+    Course findCourseByCode(String code);
+    boolean existsCourseByCourseId(long courseId);
+    boolean existsCourseByCode(String code);
 }
